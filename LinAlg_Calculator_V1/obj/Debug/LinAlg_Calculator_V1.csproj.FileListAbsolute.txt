@@ -1,0 +1,11 @@
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\bin\Debug\LinAlg_Calculator_V1.exe.config
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\bin\Debug\LinAlg_Calculator_V1.exe
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\bin\Debug\LinAlg_Calculator_V1.pdb
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.csprojAssemblyReference.cache
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.Form1.resources
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.Form2.resources
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.Properties.Resources.resources
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.csproj.GenerateResource.cache
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.csproj.CoreCompileInputs.cache
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.exe
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.pdb
