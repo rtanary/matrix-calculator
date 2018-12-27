@@ -10,39 +10,47 @@ using System.Windows.Forms;
 
 namespace LinAlg_Calculator_V1
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
-        public Form2()
+        public Form3()
         {
             InitializeComponent();
-            rbMatrixA.Checked = true;
+            rbMatrixA1.Checked = true;
+            rbMatrixA2.Checked = true;
         }
 
-        public int num;
+        public int[] num = new int[2];
         public bool Saved = false;
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSelect_Click(object sender, EventArgs e)
         {
-            
-            if(rbMatrixA.Checked)
+            if(rbMatrixA1.Checked)
             {
-                num = 0;
+                num[0] = 0;
             }
-            else if(rbMatrixB.Checked)
+            else if(rbMatrixB1.Checked)
             {
-                num = 1;
+                num[0] = 1;
             }
             else
             {
-                num = 2;
+                num[0] = 2;
+            }
+            
+            if(rbMatrixA2.Checked)
+            {
+                num[1] = 0;
+            }
+            else if(rbMatrixB2.Checked)
+            {
+                num[1] = 1;
+            }
+            else
+            {
+                num[1] = 2;
             }
             Saved = true;
             this.Close();
-        }
-
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

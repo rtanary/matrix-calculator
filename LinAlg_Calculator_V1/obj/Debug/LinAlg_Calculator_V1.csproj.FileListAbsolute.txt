@@ -9,3 +9,5 @@ D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debu
 D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.csproj.CoreCompileInputs.cache
 D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.exe
 D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.pdb
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.Form3.resources
+D:\rtanary\Documents\Projects\LinAlg_Calculator_V1\LinAlg_Calculator_V1\obj\Debug\LinAlg_Calculator_V1.Form4.resources

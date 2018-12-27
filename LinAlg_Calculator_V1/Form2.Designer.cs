@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.lblSave = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSelectMatrix = new System.Windows.Forms.Button();
             this.rbMatrixA = new System.Windows.Forms.RadioButton();
             this.rbMatrixB = new System.Windows.Forms.RadioButton();
             this.rbMatrixC = new System.Windows.Forms.RadioButton();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSave
@@ -40,19 +41,19 @@
             this.lblSave.AutoSize = true;
             this.lblSave.Location = new System.Drawing.Point(19, 9);
             this.lblSave.Name = "lblSave";
-            this.lblSave.Size = new System.Drawing.Size(105, 17);
+            this.lblSave.Size = new System.Drawing.Size(88, 17);
             this.lblSave.TabIndex = 3;
-            this.lblSave.Text = "Save Matrix As:";
+            this.lblSave.Text = "Select Matrix";
             // 
-            // btnSave
+            // btnSelectMatrix
             // 
-            this.btnSave.Location = new System.Drawing.Point(22, 110);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(139, 23);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save Selection";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSelectMatrix.Location = new System.Drawing.Point(22, 110);
+            this.btnSelectMatrix.Name = "btnSelectMatrix";
+            this.btnSelectMatrix.Size = new System.Drawing.Size(139, 23);
+            this.btnSelectMatrix.TabIndex = 4;
+            this.btnSelectMatrix.Text = "Select Matrix";
+            this.btnSelectMatrix.UseVisualStyleBackColor = true;
+            this.btnSelectMatrix.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // rbMatrixA
             // 
@@ -60,7 +61,7 @@
             this.rbMatrixA.Location = new System.Drawing.Point(22, 29);
             this.rbMatrixA.Name = "rbMatrixA";
             this.rbMatrixA.Size = new System.Drawing.Size(79, 21);
-            this.rbMatrixA.TabIndex = 5;
+            this.rbMatrixA.TabIndex = 1;
             this.rbMatrixA.TabStop = true;
             this.rbMatrixA.Text = "Matrix A";
             this.rbMatrixA.UseVisualStyleBackColor = true;
@@ -71,7 +72,7 @@
             this.rbMatrixB.Location = new System.Drawing.Point(22, 56);
             this.rbMatrixB.Name = "rbMatrixB";
             this.rbMatrixB.Size = new System.Drawing.Size(79, 21);
-            this.rbMatrixB.TabIndex = 6;
+            this.rbMatrixB.TabIndex = 2;
             this.rbMatrixB.TabStop = true;
             this.rbMatrixB.Text = "Matrix B";
             this.rbMatrixB.UseVisualStyleBackColor = true;
@@ -82,20 +83,31 @@
             this.rbMatrixC.Location = new System.Drawing.Point(22, 83);
             this.rbMatrixC.Name = "rbMatrixC";
             this.rbMatrixC.Size = new System.Drawing.Size(79, 21);
-            this.rbMatrixC.TabIndex = 7;
+            this.rbMatrixC.TabIndex = 3;
             this.rbMatrixC.TabStop = true;
             this.rbMatrixC.Text = "Matrix C";
             this.rbMatrixC.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(22, 139);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(139, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(193, 151);
+            this.ClientSize = new System.Drawing.Size(193, 195);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.rbMatrixC);
             this.Controls.Add(this.rbMatrixB);
             this.Controls.Add(this.rbMatrixA);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnSelectMatrix);
             this.Controls.Add(this.lblSave);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -107,9 +119,10 @@
 
         #endregion
         private System.Windows.Forms.Label lblSave;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnSelectMatrix;
         private System.Windows.Forms.RadioButton rbMatrixA;
         private System.Windows.Forms.RadioButton rbMatrixB;
         private System.Windows.Forms.RadioButton rbMatrixC;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

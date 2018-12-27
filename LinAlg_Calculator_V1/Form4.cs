@@ -10,39 +10,27 @@ using System.Windows.Forms;
 
 namespace LinAlg_Calculator_V1
 {
-    public partial class Form2 : Form
+    public partial class Form4 : Form
     {
-        public Form2()
+        public Form4()
         {
             InitializeComponent();
-            rbMatrixA.Checked = true;
         }
-
-        public int num;
-        public bool Saved = false;
+        public double Scalar = 1;
+        public bool Saved = false; 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            if(rbMatrixA.Checked)
+            if(double.TryParse(txtScalar.Text, out Scalar))
             {
-                num = 0;
-            }
-            else if(rbMatrixB.Checked)
-            {
-                num = 1;
+                Scalar = Convert.ToDouble(txtScalar.Text);
+                Saved = true;
+                this.Close();
             }
             else
             {
-                num = 2;
+                MessageBox.Show("Ensure that input is numeric");
             }
-            Saved = true;
-            this.Close();
-        }
-
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
