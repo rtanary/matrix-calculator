@@ -570,7 +570,7 @@ namespace LinAlg_Calculator_V1
                 {
                     if(VerifySquare(Memory[a]))
                     {
-                        MessageBox.Show("Determinant of Matrix " + Convert.ToChar(a + 65) + ":" + "\n" + Determinant(Memory[a], Memory[a].GetLength(9), Memory[a].GetLength(1)));
+                        MessageBox.Show("Determinant of Matrix " + Convert.ToChar(a + 65) + ":" + "\n" + Determinant(Memory[a], Memory[a].GetLength(0), Memory[a].GetLength(1)));
                     }
                 }
             }
