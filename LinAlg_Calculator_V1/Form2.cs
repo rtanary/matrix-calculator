@@ -40,14 +40,8 @@ namespace LinAlg_Calculator_V1
             this.Close();
         }
 
-        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The action was cancelled");
             this.Close();
         }
     }

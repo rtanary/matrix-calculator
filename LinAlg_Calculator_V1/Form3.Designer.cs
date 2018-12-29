@@ -171,7 +171,7 @@
             this.Controls.Add(this.gb2);
             this.Controls.Add(this.gb1);
             this.Name = "Form3";
-            this.Text = "Form3";
+            this.Text = "Select Matrices";
             this.gb1.ResumeLayout(false);
             this.gb1.PerformLayout();
             this.gb2.ResumeLayout(false);

@@ -39,9 +39,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select Scalar";
+            this.label1.Text = "Select Number";
             // 
             // txtScalar
             // 
@@ -56,7 +56,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(139, 23);
             this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save Selection";
+            this.btnSave.Text = "Accept ";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -80,7 +80,7 @@
             this.Controls.Add(this.txtScalar);
             this.Controls.Add(this.label1);
             this.Name = "Form4";
-            this.Text = "Form4";
+            this.Text = "Select Number";
             this.ResumeLayout(false);
             this.PerformLayout();
 

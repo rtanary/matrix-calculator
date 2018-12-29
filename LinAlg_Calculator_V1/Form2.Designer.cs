@@ -110,8 +110,8 @@
             this.Controls.Add(this.btnSelectMatrix);
             this.Controls.Add(this.lblSave);
             this.Name = "Form2";
-            this.Text = "Form2";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
+            this.Text = "Select Matrix";
+            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

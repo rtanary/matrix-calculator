@@ -52,6 +52,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnFill = new System.Windows.Forms.Button();
             this.lblDimensions = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.cbFraction = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCol)).BeginInit();
             this.SuspendLayout();
@@ -143,7 +145,7 @@
             // 
             // btnRREF
             // 
-            this.btnRREF.Location = new System.Drawing.Point(19, 158);
+            this.btnRREF.Location = new System.Drawing.Point(19, 187);
             this.btnRREF.Name = "btnRREF";
             this.btnRREF.Size = new System.Drawing.Size(162, 23);
             this.btnRREF.TabIndex = 106;
@@ -153,7 +155,7 @@
             // 
             // btnAddition
             // 
-            this.btnAddition.Location = new System.Drawing.Point(19, 187);
+            this.btnAddition.Location = new System.Drawing.Point(19, 216);
             this.btnAddition.Name = "btnAddition";
             this.btnAddition.Size = new System.Drawing.Size(162, 23);
             this.btnAddition.TabIndex = 107;
@@ -163,7 +165,7 @@
             // 
             // btnScalarMultiplication
             // 
-            this.btnScalarMultiplication.Location = new System.Drawing.Point(23, 216);
+            this.btnScalarMultiplication.Location = new System.Drawing.Point(23, 245);
             this.btnScalarMultiplication.Name = "btnScalarMultiplication";
             this.btnScalarMultiplication.Size = new System.Drawing.Size(158, 23);
             this.btnScalarMultiplication.TabIndex = 108;
@@ -173,7 +175,7 @@
             // 
             // btnMatrixMultiplication
             // 
-            this.btnMatrixMultiplication.Location = new System.Drawing.Point(23, 245);
+            this.btnMatrixMultiplication.Location = new System.Drawing.Point(23, 274);
             this.btnMatrixMultiplication.Name = "btnMatrixMultiplication";
             this.btnMatrixMultiplication.Size = new System.Drawing.Size(158, 23);
             this.btnMatrixMultiplication.TabIndex = 109;
@@ -183,7 +185,7 @@
             // 
             // btnNullspace
             // 
-            this.btnNullspace.Location = new System.Drawing.Point(23, 332);
+            this.btnNullspace.Location = new System.Drawing.Point(23, 361);
             this.btnNullspace.Name = "btnNullspace";
             this.btnNullspace.Size = new System.Drawing.Size(158, 23);
             this.btnNullspace.TabIndex = 112;
@@ -193,7 +195,7 @@
             // 
             // btnInverse
             // 
-            this.btnInverse.Location = new System.Drawing.Point(23, 274);
+            this.btnInverse.Location = new System.Drawing.Point(23, 303);
             this.btnInverse.Name = "btnInverse";
             this.btnInverse.Size = new System.Drawing.Size(158, 23);
             this.btnInverse.TabIndex = 110;
@@ -203,7 +205,7 @@
             // 
             // btnColSpace
             // 
-            this.btnColSpace.Location = new System.Drawing.Point(23, 361);
+            this.btnColSpace.Location = new System.Drawing.Point(23, 390);
             this.btnColSpace.Name = "btnColSpace";
             this.btnColSpace.Size = new System.Drawing.Size(158, 23);
             this.btnColSpace.TabIndex = 113;
@@ -213,7 +215,7 @@
             // 
             // btnRowspace
             // 
-            this.btnRowspace.Location = new System.Drawing.Point(23, 390);
+            this.btnRowspace.Location = new System.Drawing.Point(23, 419);
             this.btnRowspace.Name = "btnRowspace";
             this.btnRowspace.Size = new System.Drawing.Size(158, 23);
             this.btnRowspace.TabIndex = 114;
@@ -223,7 +225,7 @@
             // 
             // btnDeterminant
             // 
-            this.btnDeterminant.Location = new System.Drawing.Point(23, 419);
+            this.btnDeterminant.Location = new System.Drawing.Point(23, 448);
             this.btnDeterminant.Name = "btnDeterminant";
             this.btnDeterminant.Size = new System.Drawing.Size(158, 23);
             this.btnDeterminant.TabIndex = 115;
@@ -233,7 +235,7 @@
             // 
             // btnTranspose
             // 
-            this.btnTranspose.Location = new System.Drawing.Point(23, 303);
+            this.btnTranspose.Location = new System.Drawing.Point(23, 332);
             this.btnTranspose.Name = "btnTranspose";
             this.btnTranspose.Size = new System.Drawing.Size(158, 23);
             this.btnTranspose.TabIndex = 111;
@@ -243,7 +245,7 @@
             // 
             // btnCofactor
             // 
-            this.btnCofactor.Location = new System.Drawing.Point(23, 477);
+            this.btnCofactor.Location = new System.Drawing.Point(23, 506);
             this.btnCofactor.Name = "btnCofactor";
             this.btnCofactor.Size = new System.Drawing.Size(158, 23);
             this.btnCofactor.TabIndex = 116;
@@ -253,7 +255,7 @@
             // 
             // btnAdjugate
             // 
-            this.btnAdjugate.Location = new System.Drawing.Point(23, 506);
+            this.btnAdjugate.Location = new System.Drawing.Point(23, 535);
             this.btnAdjugate.Name = "btnAdjugate";
             this.btnAdjugate.Size = new System.Drawing.Size(158, 23);
             this.btnAdjugate.TabIndex = 117;
@@ -263,7 +265,7 @@
             // 
             // btnPower
             // 
-            this.btnPower.Location = new System.Drawing.Point(23, 535);
+            this.btnPower.Location = new System.Drawing.Point(23, 564);
             this.btnPower.Name = "btnPower";
             this.btnPower.Size = new System.Drawing.Size(158, 23);
             this.btnPower.TabIndex = 118;
@@ -273,7 +275,7 @@
             // 
             // btnMinor
             // 
-            this.btnMinor.Location = new System.Drawing.Point(23, 448);
+            this.btnMinor.Location = new System.Drawing.Point(23, 477);
             this.btnMinor.Name = "btnMinor";
             this.btnMinor.Size = new System.Drawing.Size(158, 23);
             this.btnMinor.TabIndex = 116;
@@ -312,11 +314,33 @@
             this.lblDimensions.TabIndex = 119;
             this.lblDimensions.Text = "(Rows by Columns)";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(19, 158);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(162, 23);
+            this.btnEdit.TabIndex = 106;
+            this.btnEdit.Text = "Edit Matrix";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // cbFraction
+            // 
+            this.cbFraction.AutoSize = true;
+            this.cbFraction.Location = new System.Drawing.Point(437, 567);
+            this.cbFraction.Name = "cbFraction";
+            this.cbFraction.Size = new System.Drawing.Size(144, 21);
+            this.cbFraction.TabIndex = 120;
+            this.cbFraction.Text = "Fractions Enabled";
+            this.cbFraction.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(936, 569);
+            this.ClientSize = new System.Drawing.Size(936, 598);
+            this.Controls.Add(this.cbFraction);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblDimensions);
             this.Controls.Add(this.btnFill);
             this.Controls.Add(this.btnClear);
@@ -341,6 +365,7 @@
             this.Controls.Add(this.nudRow);
             this.Controls.Add(this.lblTitle);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Matrix Calculator";
             ((System.ComponentModel.ISupportInitialize)(this.nudRow)).EndInit();
@@ -375,6 +400,8 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnFill;
         private System.Windows.Forms.Label lblDimensions;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.CheckBox cbFraction;
     }
 }
 

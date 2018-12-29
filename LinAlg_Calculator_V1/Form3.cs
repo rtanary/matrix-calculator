@@ -55,7 +55,6 @@ namespace LinAlg_Calculator_V1
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The action was cancelled");
             this.Close();
         }
     }
