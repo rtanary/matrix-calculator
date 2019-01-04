@@ -12,13 +12,18 @@ namespace LinAlg_Calculator_V1
 {
     public partial class Form1 : Form
     {
-        //scalar multiplication enable fractions when checked
+        //Attempt LU Decomposition Worse comes to worse, RREF Matrix * Diagonal 
+        //Need elementary row operations for upper and lower triangular matrices (can make methods/buttons for that)
+        //need a counter for the number of row exchanges in order to create such a matrix
+        //cholesky decomposition?
+        //Fix gui 
+        //update all forms to fit color scheme
         public Form1()
         {
             InitializeComponent();
-            btnClear.Visible = false;
-            btnFill.Visible = false;
-            cbFraction.Visible = false;
+            pnlCalculations.Height = this.Height;
+            pnlInput.Width = this.Width - pnlCalculations.Width;
+            tCOperations.Height = pnlCalculations.Height - lblMatrixOperations.Height;
         }
         TextBox[,] TextData = new TextBox[0, 0];
         Matrix[] Memory = new Matrix[3];
@@ -52,6 +57,16 @@ namespace LinAlg_Calculator_V1
                 return Form_3.num;
             }
             return new int[] { -1, -1 };
+        }
+        private int SelectEigenvalue(double[,] Eigenvalues)
+        {
+            Form6 Form_6 = new Form6(Eigenvalues);
+            Form_6.ShowDialog();
+            if(Form_6.Saved)
+            {
+                return Form_6.num;
+            }
+            return -1;
         }
         private double[,] Save(double[,] Matrix, TextBox[,] Text)
         {
@@ -87,37 +102,25 @@ namespace LinAlg_Calculator_V1
         }
         private void SetUpTextBox(int row, int col)
         {
-            int width = 22;
-            int space = 10;
-            int length = 66;
+            int width = 55;
+            int space = 5;
+            int length = 41;
 
-            Point origin = new Point(145, 36);
+            Point origin = new Point(145, 85);
 
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++)
                 {
                     TextData[i, j] = new TextBox();
-                    TextData[i, j].TabIndex = 4;
+                    TextData[i, j].TabIndex = 10;
                     TextData[i, j].Name = "TextBox" + i.ToString() + j.ToString();
-                    TextData[i, j].Location = new Point(origin.X + (length + space) * j, origin.Y + (width + space) * i);
+                    TextData[i, j].Location = new Point(origin.X + (length + space) * j, origin.Y + (length / 2 + space) * i);
                     TextData[i, j].Size = new Size(length, width);
                     TextData[i, j].TextAlign = HorizontalAlignment.Center;
                     this.Controls.Add(TextData[i, j]);//setting up each textbox for form
                 }
             }
-            btnClear.Location = new Point(origin.X, origin.Y + (width + space) * row + space / 2);
-            btnFill.Location = new Point(origin.X, origin.Y + (width + space) * row + btnFill.Height + space);
-            cbFraction.Location = new Point(origin.X, origin.Y + (width + space) * row + (btnFill.Height + space) * 2);
-            btnClear.Visible = true;
-            btnFill.Visible = true;
-            cbFraction.Visible = true;
-            btnClear.TabStop = true;
-            btnFill.TabStop = true;
-            cbFraction.TabStop = true;
-            btnClear.TabIndex = 5;
-            btnFill.TabIndex = 5;//setting up buttons to be used for new matrix
-            cbFraction.TabIndex = 6;
         }
         private void ClearTextBoxes(Control m)
         {
@@ -140,6 +143,9 @@ namespace LinAlg_Calculator_V1
                     case "-"://negative sign
                         SupScript += Convert.ToChar(8315);
                         break;
+                    case "."://decimal
+                        SupScript += Convert.ToChar(183);
+                        break;
                     default://numbers
                         switch (Convert.ToInt32(s.Substring(i, 1)))
                         {
@@ -161,6 +167,16 @@ namespace LinAlg_Calculator_V1
             }
             return SupScript;
         }
+        private string Subscriptnum(int num)
+        {
+            string s = string.Empty;
+            num++;//changing num to its actual number
+            for (int i = 0; i < num.ToString().Length; i++)
+            {
+                s += Convert.ToChar(Convert.ToInt32(num.ToString().Substring(i, 1)) + 8320);
+            }
+            return s;
+        }
         private void OutputResult(double[,] Matrix, string ID)
         {
             Form5 Form_5 = new Form5(Matrix, ID, cbFraction.Checked);
@@ -168,9 +184,24 @@ namespace LinAlg_Calculator_V1
             if (Form_5.Saved)
             {
                 int a = Form_5.SelectMatrix();
-                Save(Matrix, a);
-                MessageBox.Show("Matrix Saved as Matrix " + Convert.ToChar(a + 65));
+                if(a!=-1)
+                {
+                    Save(Matrix, a);
+                    MessageBox.Show("Matrix Saved as Matrix " + Convert.ToChar(a + 65));
+                }
             }
+        }
+        private string Fraction(double d)
+        {
+            int max = 1000;
+            for (int i = 2; i < max; i++)
+            {
+                if (i * d % 1 == 0 && d % 1 != 0)
+                {
+                    return ((i * d).ToString() + "/" + i);
+                }
+            }
+            return d.ToString();
         }
         private bool VerifySave(TextBox[,] Text, int row, int col)//textboxes can be saved as double
         {
@@ -272,16 +303,35 @@ namespace LinAlg_Calculator_V1
         {
             if (VerifySquare(Matrix.MatrixNum))
             {
-                if (Matrix.Determinant(Matrix.MatrixNum, Matrix.row, Matrix.col) == 0)
+                if (Matrix.Determinant(Matrix.MatrixNum) == 0)
                 {
                     MessageBox.Show("Matrix cannot be inverted");
                 }
-                return (Matrix.Determinant(Matrix.MatrixNum, Matrix.row, Matrix.col) != 0);
+                return (Matrix.Determinant(Matrix.MatrixNum) != 0);
 
             }
             return false;
         }
-
+        private bool VerifySymmetric (Matrix Matrix)
+        {
+            int row = Matrix.row;
+            int col = Matrix.col;
+            if(VerifySquare(Matrix.MatrixNum))
+            {
+                for(int i=0;i<row;i++)
+                {
+                    for(int j=i;j<col;j++)
+                    {
+                        if(Matrix.MatrixNum[i,j]!=Matrix.MatrixNum[j,i])
+                        {
+                            MessageBox.Show("Matrix is not symmetric, action cannot be performed");
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             ClearTextBoxes(this);//disposing of prior textboxes
@@ -335,21 +385,13 @@ namespace LinAlg_Calculator_V1
                 double c = SelectScalar();
                 if (!(double.IsNaN(c)))
                 {
-                    if(cbFraction.Checked)
+                    if (cbFraction.Checked)
                     {
-                        int max = 1000;
-                        for(int i=2;i<max;i++)
-                        {
-                            if(i* c % 1 == 0 && c % 1 != 0)
-                            {
-                                OutputResult(Memory[a].ScalarMultiplication(c, Memory[a].MatrixNum), "Matrix (" + i * c + "/" + i+")" + Convert.ToChar(a + 65)); 
-                                return;
-                            }
-                        }
+                        OutputResult(Memory[a].ScalarMultiplication(c, Memory[a].MatrixNum), "Matrix " + Fraction(c) + Convert.ToChar(a + 65));
                     }
                     else
                     {
-                        OutputResult(Memory[a].ScalarMultiplication(c, Memory[a].MatrixNum), "Matrix " + c.ToString() + Convert.ToChar(a + 65));
+                        OutputResult(Memory[a].ScalarMultiplication(c, Memory[a].MatrixNum), "Matrix " + Math.Round(c,3).ToString() + Convert.ToChar(a + 65));
                     }
                 }
             }
@@ -369,7 +411,7 @@ namespace LinAlg_Calculator_V1
             {
                 if (VerifyMultiplication(Memory[a[0]].MatrixNum, Memory[a[1]].MatrixNum))
                 {
-                    OutputResult(Memory[a[0]].MMultiplciation(Memory[a[0]].MatrixNum, Memory[a[1]].MatrixNum), "Matrix " + Convert.ToChar(a[0] + 65) + Convert.ToChar(a[1] + 65));
+                    OutputResult(Memory[a[0]].MMultiplication(Memory[a[0]].MatrixNum, Memory[a[1]].MatrixNum), "Matrix " + Convert.ToChar(a[0] + 65) + Convert.ToChar(a[1] + 65));
                 }
             }
         }
@@ -383,25 +425,36 @@ namespace LinAlg_Calculator_V1
                     double k = SelectScalar();
                     if (!(double.IsNaN(k)))
                     {
-                        if (k % 1 == 0)
+                        if(Memory[a].VerifyDiagonalizable(Memory[a].MatrixNum)&&Memory[a].VerifyPositiveDefinite(Memory[a].MatrixNum))
                         {
-                            int c = Convert.ToInt32(k);
-                            if (c < 0 && VerifyInvertible(Memory[a]))
+                            double[,] D = Memory[a].Power(k,Memory[a].Diagonal(Memory[a].MatrixNum));
+                            double[,] P = Memory[a].Eigenspace(Memory[a].MatrixNum);
+                            double[,] Pinv = Memory[a].Inverse(P);
+                            double[,] Product = Memory[a].MMultiplication(Memory[a].MMultiplication(P, D), Pinv);
+                            OutputResult(Product, "Matrix " + Convert.ToChar(a + 65) + SuperscriptNum(k.ToString()));
+                        }
+                        else//use basic power
+                        {
+                            if (k % 1 == 0)
                             {
-                                OutputResult(Memory[a].Power(c, Memory[a].Inverse(Memory[a].MatrixNum)), "Matrix " + Convert.ToChar(a + 65) + SuperscriptNum(c.ToString()));
-                            }
-                            else if (c >= 0)
-                            {
-                                OutputResult(Memory[a].Power(c, Memory[a].MatrixNum), "Matrix " + Convert.ToChar(a + 65) + SuperscriptNum(c.ToString()));
+                                int c = Convert.ToInt32(k);
+                                if (c < 0 && VerifyInvertible(Memory[a]))
+                                {
+                                    OutputResult(Memory[a].Power(c, Memory[a].Inverse(Memory[a].MatrixNum)), "Matrix " + Convert.ToChar(a + 65) + SuperscriptNum(c.ToString()));
+                                }
+                                else if (c >= 0)
+                                {
+                                    OutputResult(Memory[a].Power(c, Memory[a].MatrixNum), "Matrix " + Convert.ToChar(a + 65) + SuperscriptNum(c.ToString()));
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Matrix is not invertible, meaning there cannot exist a negative power of Matrix " + Convert.ToChar(a + 65));
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Matrix is not invertible, meaning there cannot exist a negative power of Matrix " + Convert.ToChar(a + 65));
+                                MessageBox.Show("Since matrix is not diagonalizable or is not positive definite, it cannot evaluate for non-integer matrix powers");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Calculator currently cannot evaluate for non-integer matrix powers");
                         }
                     }
                 }
@@ -414,7 +467,7 @@ namespace LinAlg_Calculator_V1
             {
                 if (VerifySquare(Memory[a].MatrixNum))
                 {
-                    MessageBox.Show("Determinant of Matrix " + Convert.ToChar(a + 65) + ":" + "\n" + Memory[a].Determinant(Memory[a].MatrixNum, Memory[a].row, Memory[a].col));
+                    MessageBox.Show("Determinant of Matrix " + Convert.ToChar(a + 65) + ":" + "\n" + Memory[a].Determinant(Memory[a].MatrixNum));
                 }
             }
         }
@@ -499,25 +552,61 @@ namespace LinAlg_Calculator_V1
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < TextData.GetLength(0); i++)
+            if(TextData.GetLength(0)==0)
             {
-                for (int j = 0; j < TextData.GetLength(1); j++)
+                MessageBox.Show("Please generate matrix dimensions");
+            }
+            else
+            {
+                for (int i = 0; i < TextData.GetLength(0); i++)
                 {
-                    TextData[i, j].Text = string.Empty;//clear all current textbox inputs
+                    for (int j = 0; j < TextData.GetLength(1); j++)
+                    {
+                        TextData[i, j].Text = string.Empty;//clear all current textbox inputs
+                    }
                 }
             }
         }
         private void btnFill_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < TextData.GetLength(0); i++)
+            if (TextData.GetLength(0) == 0)
             {
-                for (int j = 0; j < TextData.GetLength(1); j++)
+                MessageBox.Show("Please generate matrix dimensions");
+            }
+            else
+            {
+                for(int k=0;k<TextData.GetLength(0);k++)
                 {
-                    if (TextData[i, j].Text == string.Empty)
+                    for(int l=0;l<TextData.GetLength(1);l++)
                     {
-                        TextData[i, j].Text = 0.ToString();//any blank textboxes become 0
+                        if(TextData[k,l].Text==string.Empty)
+                        {
+                            double a = SelectScalar();
+                            if (!(double.IsNaN(a)))
+                            {
+                                for (int i = 0; i < TextData.GetLength(0); i++)
+                                {
+                                    for (int j = 0; j < TextData.GetLength(1); j++)
+                                    {
+                                        if (TextData[i, j].Text == string.Empty)
+                                        {
+                                            if(cbFraction.Checked)
+                                            {
+                                                TextData[i, j].Text = Fraction(a);
+                                            }
+                                            else
+                                            {
+                                                TextData[i, j].Text = a.ToString();//any blank textboxes become the fraction
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            return;
+                        }
                     }
                 }
+                MessageBox.Show("No empty cells to fill!");
             }
         }
 
@@ -539,7 +628,7 @@ namespace LinAlg_Calculator_V1
                             {
                                 if (k * Memory[a].MatrixNum[i, j] % 1 == 0 && Memory[a].MatrixNum[i, j] % 1 != 0)
                                 {
-                                    TextData[i, j].Text = (k * Memory[a].MatrixNum[i, j]).ToString() + "/" + k.ToString();
+                                    TextData[i, j].Text = Fraction(Memory[a].MatrixNum[i, j]);
                                     break;
                                 }
                                 if (k == max - 1)
@@ -552,6 +641,127 @@ namespace LinAlg_Calculator_V1
                         {
                             TextData[i, j].Text = Memory[a].MatrixNum[i, j].ToString();
                         }
+                    }
+                }
+            }
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            pnlCalculations.Height = this.Height;
+            pnlInput.Width = this.Width - pnlCalculations.Width;
+            tCOperations.Height = pnlCalculations.Height - lblMatrixOperations.Height;
+        }
+
+        private void btnUpper_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                Matrix newMatrix = new Matrix(Memory[a].row, Memory[a].col);
+                newMatrix = Memory[a].LU(Memory[a].MatrixNum)[1];
+                OutputResult(newMatrix.MatrixNum, "Matrix U(" +Convert.ToChar(a+65)+")");
+            }
+        }
+
+        private void btnLower_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                Matrix newMatrix = new Matrix(Memory[a].row, Memory[a].col);
+                newMatrix = Memory[a].LU(Memory[a].MatrixNum)[0];
+                OutputResult(newMatrix.MatrixNum, "Matrix L("+Convert.ToChar(a+65)+")");
+            }
+        }
+
+        private void btnCholesky_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if (Verify(a))
+            {
+                if(VerifySymmetric(Memory[a]))
+                {
+                    if(Memory[a].Cholesky(Memory[a].MatrixNum)!=null)
+                    {
+                        OutputResult(Memory[a].Cholesky(Memory[a].MatrixNum), "Cholesky Decomposition of Matrix " + Convert.ToChar(a + 65));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Matrix is not capable of being decomposed");
+                    }
+                }
+            }
+        }
+
+        private void btnEValues_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                if(VerifySquare(Memory[a].MatrixNum))
+                {
+                    OutputResult(Memory[a].Eigenvalues_Num(Memory[a].MatrixNum), "Eigenvalue of Matrix " + Convert.ToChar(a + 65));
+                }
+            }
+        }
+
+        private void btnDiagonal_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if (Verify(a))
+            {
+                if (VerifySquare(Memory[a].MatrixNum))
+                {
+                    //verify if it is diagonizable 
+                    OutputResult(Memory[a].Diagonal(Memory[a].MatrixNum), "Matrix D(" + Convert.ToChar(a + 65)+")");
+                }
+            }
+        }
+
+        private void btnEvectors_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if (Verify(a))
+            {
+                if (VerifySquare(Memory[a].MatrixNum))
+                {
+                    double[,] Evalues = Memory[a].Eigenvalues_Num(Memory[a].MatrixNum);
+                    int b = SelectEigenvalue(Evalues);
+                    if (b != -1)
+                    {
+                        OutputResult(Memory[a].Eigenvector(Memory[a].MatrixNum, Evalues[0, b]), "v" + Subscriptnum(b)+" of Matrix " + Convert.ToChar(a+65)+":");
+                    }
+                }
+            }
+        }
+
+        private void btnEigenspace_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                if(VerifySquare(Memory[a].MatrixNum))
+                {
+                    OutputResult(Memory[a].Eigenspace(Memory[a].MatrixNum), "Matrix P("+Convert.ToChar(a+65)+")");
+                }
+            }
+        }
+
+        private void btnVerifyDiagonal_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                if(VerifySquare(Memory[a].MatrixNum))
+                {
+                    if(Memory[a].VerifyDiagonalizable(Memory[a].MatrixNum))
+                    {
+                        MessageBox.Show("Matrix "+ Convert.ToChar(a + 65) + " is diagonalizable");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Matrix " + Convert.ToChar(a + 65) + " is not diagonalizable");
                     }
                 }
             }

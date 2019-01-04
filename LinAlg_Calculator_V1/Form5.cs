@@ -30,7 +30,7 @@ namespace LinAlg_Calculator_V1
             Point origin = new Point(12, 29);
 
             TextBox[,] TextOutput = new TextBox[row, col];
-            this.Size = new Size(margin*(col+2) + col*length + space, margin*(row+7)+row*width+lblOutput.Height +btnOk.Height +btnSave.Height);
+            this.Size = new Size(margin*(col+2) + col*length + space, margin*(row+7)+row*width+lblOutput.Height +pnlButtons.Height);
 
             lblOutput.Text = Identifier;
 
@@ -58,21 +58,19 @@ namespace LinAlg_Calculator_V1
                             }
                             if (k == max - 1)//if there is no way to interpret fraction with max
                             {
-                                TextOutput[i, j].Text = Matrix[i, j].ToString();
+                                TextOutput[i, j].Text = Math.Round(Matrix[i, j],3).ToString();
                             }
                         }
                     }
                     else
                     {
-                        TextOutput[i, j].Text = Matrix[i, j].ToString();
+                        TextOutput[i, j].Text = Math.Round(Matrix[i, j],3).ToString();
                     }
 
                     this.Controls.Add(TextOutput[i, j]);
                 }
             }
-            btnOk.Location = new Point(origin.X, origin.Y + (width + space) * row +btnSave.Height+space);
-            btnSave.Location = new Point(origin.X, origin.Y + (width + space) * row);
-
+            pnlButtons.Location = new Point(origin.X, origin.Y + (width + space) * row);
         }
         public int SelectMatrix()
         {

@@ -46,9 +46,11 @@
             // rbMatrixA1
             // 
             this.rbMatrixA1.AutoSize = true;
+            this.rbMatrixA1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixA1.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixA1.Location = new System.Drawing.Point(16, 21);
             this.rbMatrixA1.Name = "rbMatrixA1";
-            this.rbMatrixA1.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixA1.Size = new System.Drawing.Size(82, 22);
             this.rbMatrixA1.TabIndex = 0;
             this.rbMatrixA1.TabStop = true;
             this.rbMatrixA1.Text = "Matrix A";
@@ -57,9 +59,11 @@
             // rbMatrixB1
             // 
             this.rbMatrixB1.AutoSize = true;
+            this.rbMatrixB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixB1.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixB1.Location = new System.Drawing.Point(16, 48);
             this.rbMatrixB1.Name = "rbMatrixB1";
-            this.rbMatrixB1.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixB1.Size = new System.Drawing.Size(83, 22);
             this.rbMatrixB1.TabIndex = 1;
             this.rbMatrixB1.TabStop = true;
             this.rbMatrixB1.Text = "Matrix B";
@@ -68,9 +72,11 @@
             // rbMatrixC1
             // 
             this.rbMatrixC1.AutoSize = true;
+            this.rbMatrixC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixC1.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixC1.Location = new System.Drawing.Point(16, 75);
             this.rbMatrixC1.Name = "rbMatrixC1";
-            this.rbMatrixC1.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixC1.Size = new System.Drawing.Size(84, 22);
             this.rbMatrixC1.TabIndex = 2;
             this.rbMatrixC1.TabStop = true;
             this.rbMatrixC1.Text = "Matrix C";
@@ -78,6 +84,7 @@
             // 
             // gb1
             // 
+            this.gb1.BackColor = System.Drawing.Color.Gray;
             this.gb1.Controls.Add(this.rbMatrixA1);
             this.gb1.Controls.Add(this.rbMatrixC1);
             this.gb1.Controls.Add(this.rbMatrixB1);
@@ -89,6 +96,7 @@
             // 
             // gb2
             // 
+            this.gb2.BackColor = System.Drawing.Color.Gray;
             this.gb2.Controls.Add(this.rbMatrixA2);
             this.gb2.Controls.Add(this.rbMatrixC2);
             this.gb2.Controls.Add(this.rbMatrixB2);
@@ -101,9 +109,11 @@
             // rbMatrixA2
             // 
             this.rbMatrixA2.AutoSize = true;
+            this.rbMatrixA2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixA2.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixA2.Location = new System.Drawing.Point(16, 21);
             this.rbMatrixA2.Name = "rbMatrixA2";
-            this.rbMatrixA2.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixA2.Size = new System.Drawing.Size(82, 22);
             this.rbMatrixA2.TabIndex = 0;
             this.rbMatrixA2.TabStop = true;
             this.rbMatrixA2.Text = "Matrix A";
@@ -112,9 +122,11 @@
             // rbMatrixC2
             // 
             this.rbMatrixC2.AutoSize = true;
+            this.rbMatrixC2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixC2.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixC2.Location = new System.Drawing.Point(16, 75);
             this.rbMatrixC2.Name = "rbMatrixC2";
-            this.rbMatrixC2.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixC2.Size = new System.Drawing.Size(84, 22);
             this.rbMatrixC2.TabIndex = 2;
             this.rbMatrixC2.TabStop = true;
             this.rbMatrixC2.Text = "Matrix C";
@@ -123,9 +135,11 @@
             // rbMatrixB2
             // 
             this.rbMatrixB2.AutoSize = true;
+            this.rbMatrixB2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbMatrixB2.ForeColor = System.Drawing.SystemColors.Control;
             this.rbMatrixB2.Location = new System.Drawing.Point(16, 48);
             this.rbMatrixB2.Name = "rbMatrixB2";
-            this.rbMatrixB2.Size = new System.Drawing.Size(79, 21);
+            this.rbMatrixB2.Size = new System.Drawing.Size(83, 22);
             this.rbMatrixB2.TabIndex = 1;
             this.rbMatrixB2.TabStop = true;
             this.rbMatrixB2.Text = "Matrix B";
@@ -154,9 +168,11 @@
             // lblSelect
             // 
             this.lblSelect.AutoSize = true;
+            this.lblSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(215)))));
             this.lblSelect.Location = new System.Drawing.Point(15, 19);
             this.lblSelect.Name = "lblSelect";
-            this.lblSelect.Size = new System.Drawing.Size(104, 17);
+            this.lblSelect.Size = new System.Drawing.Size(152, 24);
             this.lblSelect.TabIndex = 7;
             this.lblSelect.Text = "Select Matrices";
             // 
@@ -164,6 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(98)))), ((int)(((byte)(98)))));
             this.ClientSize = new System.Drawing.Size(268, 255);
             this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.btnCancel);
