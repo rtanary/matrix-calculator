@@ -766,5 +766,14 @@ namespace LinAlg_Calculator_V1
                 }
             }
         }
+
+        private void btnFrobNorm_Click(object sender, EventArgs e)
+        {
+            int a = SelectMatrix_1();
+            if(Verify(a))
+            {
+                MessageBox.Show("Frobenius of Matrix " + Convert.ToChar(a + 65) + ": " + Math.Round(Memory[a].norm(Memory[a].MatrixNum)));
+            }
+        }
     }
 }

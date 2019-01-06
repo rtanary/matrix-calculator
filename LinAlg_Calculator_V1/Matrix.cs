@@ -700,7 +700,7 @@ public struct Matrix
             {
                 norm += Math.Pow(newMatrix[i,j],2);
             }
-            norm = Math.Sqrt(norm);
+            norm = Math.Sqrt(norm);//finding norm for each row
             if (norm ==0)
             {
                 norm = 1;
@@ -802,5 +802,17 @@ public struct Matrix
             }
         }
         return true;
+    }
+    public double norm(double[,] Matrix)
+    {
+        double norm=0;
+        for(int i=0;i<Matrix.GetLength(0);i++)
+        {
+            for(int j=0;j<Matrix.GetLength(1);j++)
+            {
+                norm += Math.Pow(Matrix[i, j], 2);
+            }
+        }
+        return Math.Sqrt(norm);
     }
 }

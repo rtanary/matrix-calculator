@@ -67,10 +67,10 @@
             this.btnEValues = new System.Windows.Forms.Button();
             this.lblMatrixOperations = new System.Windows.Forms.Label();
             this.pnlInput = new System.Windows.Forms.Panel();
-            this.cbSqrt = new System.Windows.Forms.CheckBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.cbFraction = new System.Windows.Forms.CheckBox();
             this.btnFill = new System.Windows.Forms.Button();
+            this.btnFrobNorm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCol)).BeginInit();
             this.pnlCalculations.SuspendLayout();
@@ -390,6 +390,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnFrobNorm);
             this.tabPage2.Controls.Add(this.btnAddition);
             this.tabPage2.Controls.Add(this.btnMatrixMultiplication);
             this.tabPage2.Controls.Add(this.btnCholesky);
@@ -507,7 +508,6 @@
             // 
             this.pnlInput.BackColor = System.Drawing.Color.Gray;
             this.pnlInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlInput.Controls.Add(this.cbSqrt);
             this.pnlInput.Controls.Add(this.btnClear);
             this.pnlInput.Controls.Add(this.btnSave);
             this.pnlInput.Controls.Add(this.cbFraction);
@@ -523,18 +523,6 @@
             this.pnlInput.Name = "pnlInput";
             this.pnlInput.Size = new System.Drawing.Size(806, 97);
             this.pnlInput.TabIndex = 1;
-            // 
-            // cbSqrt
-            // 
-            this.cbSqrt.AutoSize = true;
-            this.cbSqrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSqrt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.cbSqrt.Location = new System.Drawing.Point(103, 66);
-            this.cbSqrt.Name = "cbSqrt";
-            this.cbSqrt.Size = new System.Drawing.Size(62, 24);
-            this.cbSqrt.TabIndex = 3;
-            this.cbSqrt.Text = "Sqrt";
-            this.cbSqrt.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
@@ -567,6 +555,16 @@
             this.btnFill.Text = "Fill Empty Entries";
             this.btnFill.UseVisualStyleBackColor = true;
             this.btnFill.Click += new System.EventHandler(this.btnFill_Click);
+            // 
+            // btnFrobNorm
+            // 
+            this.btnFrobNorm.Location = new System.Drawing.Point(6, 180);
+            this.btnFrobNorm.Name = "btnFrobNorm";
+            this.btnFrobNorm.Size = new System.Drawing.Size(149, 23);
+            this.btnFrobNorm.TabIndex = 6;
+            this.btnFrobNorm.Text = "Frobenius Norm";
+            this.btnFrobNorm.UseVisualStyleBackColor = true;
+            this.btnFrobNorm.Click += new System.EventHandler(this.btnFrobNorm_Click);
             // 
             // Form1
             // 
@@ -638,9 +636,9 @@
         private System.Windows.Forms.Button btnEvectors;
         private System.Windows.Forms.Button btnCholesky;
         private System.Windows.Forms.Button btnEValues;
-        private System.Windows.Forms.CheckBox cbSqrt;
         private System.Windows.Forms.Button btnVerifyDiagonal;
         private System.Windows.Forms.Button btnEigenspace;
+        private System.Windows.Forms.Button btnFrobNorm;
     }
 }
 
